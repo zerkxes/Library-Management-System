@@ -7,7 +7,7 @@ const Home = () => {
         <React.Fragment>
             <AddUser />
             <h3>Users:</h3>
-            <ListUser/>
+            <ListUser />
         </React.Fragment>
     );
 }

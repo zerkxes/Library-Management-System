@@ -1,4 +1,6 @@
 import Button from "../signIn/Button";
+import Update from "./Update";
+import Delete from "./Delete";
 const List = (props) => {
     const ob = props.objarr;
     //const column = Object.keys(props.ob[0]);
@@ -21,7 +23,7 @@ const List = (props) => {
                         <td>{x.firstName + ' ' + x.lastName}</td>
                         <td>{x.username}</td>
                         <td>{x.gender}</td>
-                        <td><Button value="Update" style="btn btn-primary"/><Button value="Delete" style="btn btn-danger"/></td>
+                        <td><Update obj={x}/><Delete/></td>
                     </tr>
                 )
             })
