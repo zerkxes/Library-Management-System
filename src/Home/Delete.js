@@ -3,11 +3,17 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 const Delete = (props) => {
+    const ob = props.obj;
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const deleteHandler = () => {
+        fetch(`https://dummyjson.com/users/${ob.id}`, {
+            method: 'DELETE'
+        }).then(res => res.json()).then(console.log);
+    }
     return (
         <>
             <Button variant="danger" onClick={handleShow}>
@@ -23,7 +29,7 @@ const Delete = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Cancel
                     </Button>
-                    <Button variant="danger" onClick={handleClose}>
+                    <Button variant="danger" onClick={function () { handleClose(); deleteHandler(); }}>
                         Delete
                     </Button>
                 </Modal.Footer>

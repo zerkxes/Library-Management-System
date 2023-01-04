@@ -1,6 +1,6 @@
 import Button from "../signIn/Button";
-import Update from "./Update";
-import Delete from "./Delete";
+import Update from "../Home/Update"
+import Delete from "../Home/Delete";
 const List = (props) => {
     const ob = props.objarr;
     //const column = Object.keys(props.ob[0]);
@@ -9,8 +9,9 @@ const List = (props) => {
         return (<tr>
             <th scope="col">Uid/Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Username</th>
-            <th scope="col">Role</th>
+            <th scope="col">UserId</th>
+            <th scope="col">Borrow Date</th>
+            <th scope="col">Return Date</th>
             <th scope="col">Modify</th> 
         </tr>)
     }
@@ -20,9 +21,10 @@ const List = (props) => {
                 return (
                     <tr>
                         <th scope="row">{x.id}</th>
-                        <td>{x.firstName + ' ' + x.lastName}</td>
-                        <td>{x.username}</td>
-                        <td>{x.gender}</td>
+                        <td>{x.title}</td>
+                        <td>{x.brand}</td>
+                        <td>{x.price}</td>
+                        <td>{x.price}</td>
                         <td><Update obj={x}/><Delete obj={x}/></td>
                     </tr>
                 )

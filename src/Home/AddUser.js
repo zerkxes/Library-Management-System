@@ -21,7 +21,7 @@ const AddUser = () => {
             <div className="col-md-3">
                 <label className="visually-hidden" htmlFor="inputName" />
                 <div className="input-group">
-                    <input type="text" className="form-control" id="inputName" placeholder="Fullame" required/>
+                    <input type="text" className="form-control" id="inputName" placeholder="Fullname" required/>
                 </div>
             </div>
             <div className="col-md-3">

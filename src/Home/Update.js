@@ -8,6 +8,21 @@ const Update = (props) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const [newData, setNewData] = useState(JSON.stringify(data))
+    const newDataHandler = (event) => {
+        setNewData(event.target.value);
+    }
+    const formSubmissionHandler = () => {
+        console.log(newData);
+        fetch('https://dummyjson.com/users/add', {
+            method: 'POST',
+            body: newData,
+            headers: {
+                'Content-type':'application/json'
+            }
+        }).then(res => res.json()).then(console.log);
+    }
     return (
         <React.Fragment>
             <Button variant="primary" onClick={handleShow}>
@@ -21,7 +36,7 @@ const Update = (props) => {
                 <Modal.Body>
                     <form>
                         <div className="mb-3">
-                            <textarea class="form-control" rows="5" value={JSON.stringify(data)}/>
+                            <textarea className="form-control" rows="5" value={newData} onChange={newDataHandler} />
                         </div>
                     </form>
                 </Modal.Body>
@@ -29,7 +44,7 @@ const Update = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={function() {handleClose(); formSubmissionHandler();}}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

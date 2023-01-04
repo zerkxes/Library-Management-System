@@ -32,7 +32,7 @@ const SignUp = () => {
                 <label htmlFor="floatingPassword">Password</label>
             </div>
             <br />
-            <Button value="Sign Up" />
+            <Button value="Sign Up" style="w-100 btn btn-lg btn-primary"/>
         </form>
     );
 }

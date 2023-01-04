@@ -1,22 +1,47 @@
-import Button from './Button';
+import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
-
+import Button from './Button';
 const SignIn = () => {
     const [inpName, setInName] = useState('');
     const [inpPass, setInPass] = useState('');
     const [inPassCheck, setInpPassCheck] = useState(true);
+    const history = useHistory();
     const nameChangeHandler = (event) => {
         setInName(event.target.value);
+    }
+
+    async function passCheck() {
+        try {
+            const res = await fetch(`https://dummyjson.com/users/search?q=${inpName}`);
+            
+            if (!res.ok)
+                throw new Error('Something went wrong');
+
+            const data = await res.json();
+            if (data.users[0].password === inpPass) {
+                history.push('/home');
+            }
+            else
+                return false;
+
+        } catch (error) {
+            setInpPassCheck(false);
+        }
     }
 
     const formSubmissionHandler = (event) => {
         event.preventDefault();
         if (inpPass.trim() === '' || inpPass.length <= 6)
             setInpPassCheck(false);
-            else
-            setInpPassCheck(true);
-        setInName('');
-        setInPass('');
+        else {
+            let bool = passCheck();
+            if (bool) {
+                setInpPassCheck(true);
+            }
+            else {
+                setInpPassCheck(false);
+            }
+        }
     }
 
     const passChangeHandler = (event) => {
@@ -37,9 +62,10 @@ const SignIn = () => {
                 <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                 <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
             </div>
-            <Button value="Sign In" style="w-100 btn btn-lg btn-primary"/>
+            {!inPassCheck  && <p>Password Mismatch or Invalid Username</p>}
+            <Button style="w-100 btn btn-lg btn-primary" value="Sign In" />
             <p></p>
-            <Button value="Sign Up" style="w-100 btn btn-lg btn-primary"/>
+            <Link className="w-100 btn btn-lg btn-primary" role='button' to='/signup'>Sign Up</Link>
         </form>
     )
 }
