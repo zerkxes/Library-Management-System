@@ -3,26 +3,22 @@ import Update from "./Update";
 import Delete from "./Delete";
 const List = (props) => {
     const ob = props.objarr;
-    //const column = Object.keys(props.ob[0]);
+    const column = Object.keys(ob[0]);
     //console.log(ob);
     const Thdata = () => {
-        return (<tr>
-            <th scope="col">Uid/Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Username</th>
-            <th scope="col">Role</th>
-            <th scope="col">Modify</th> 
-        </tr>)
+        return column.map((data)=>{
+            return <th scope="col" key={data}>{data}</th>
+        })
     }
     const TdData= () => {
         return (
              ob.map((x) => {
                 return (
                     <tr>
-                        <th scope="row">{x.id}</th>
-                        <td>{x.firstName + ' ' + x.lastName}</td>
+                        <th scope="row" key={x.id}>{x.id}</th>
+                        <td>{x.name}</td>
                         <td>{x.username}</td>
-                        <td>{x.gender}</td>
+                        <td>{x.role}</td>
                         <td><Update obj={x}/><Delete obj={x}/></td>
                     </tr>
                 )
@@ -30,7 +26,7 @@ const List = (props) => {
         )
     }
     return (
-        <table className="table">
+        <table className="table table-hover align-middle">
             <thead>
                 {Thdata()}
             </thead>

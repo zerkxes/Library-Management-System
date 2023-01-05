@@ -1,45 +1,43 @@
 import Button from "../signIn/Button";
 import Update from "../Home/Update"
 import Delete from "../Home/Delete";
+import Borrow from "./Borrow";
 const List = (props) => {
     const ob = props.objarr;
-    //const column = Object.keys(props.ob[0]);
+    const column = Object.keys(ob[0]);
     //console.log(ob);
     const Thdata = () => {
-        return (<tr>
-            <th scope="col">Uid/Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">UserId</th>
-            <th scope="col">Borrow Date</th>
-            <th scope="col">Return Date</th>
-            <th scope="col">Modify</th> 
-        </tr>)
+        return column.map((data) => {
+            return <th scope="col" key={data}>{data}</th>
+        })
     }
-    const TdData= () => {
+    const TdData = () => {
         return (
-             ob.map((x) => {
+            ob.map((x) => {
                 return (
-                    <tr>
-                        <th scope="row">{x.id}</th>
-                        <td>{x.title}</td>
-                        <td>{x.brand}</td>
-                        <td>{x.price}</td>
-                        <td>{x.price}</td>
-                        <td><Update obj={x}/><Delete obj={x}/></td>
+                    <tr >
+                        <th scope="row" key={x.id}>{x.id}</th>
+                        <td style={{width: '6rem'}} >{x.name}</td>
+                        <td style={{width:'7rem'}}>{x.username}</td>
+                        <td style={{width:'7rem'}}>{x.borrow_d}</td>
+                        <td style={{width:'7rem'}}>{x.return_d}</td>
+                        <td><Update obj={x} /><Delete obj={x} /><Borrow obj={x}/></td>
                     </tr>
                 )
             })
         )
     }
     return (
-        <table className="table">
-            <thead>
-                {Thdata()}
-            </thead>
-            <tbody>
-                {TdData()}
-            </tbody>
-        </table>
+        <div className="table-responsive" >
+            <table className="table table-hover align-middle">
+                <thead>
+                    {Thdata()}
+                </thead>
+                <tbody>
+                    {TdData()}
+                </tbody>
+            </table>
+        </div>
     );
 }
 
