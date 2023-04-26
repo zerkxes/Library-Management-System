@@ -12,7 +12,7 @@ function App() {
         position: 'absolute', left: '48%', top: '50%',
         transform: 'translate(-48%, -50%)'
       }}>
-        <div className='container p-3 rounded-3 shadow-lg bg-light' >
+        <div className='container p-3 rounded-3 shadow-lg bg-light'>
           <Route path='/'>
             <Redirect to='/signin'/>
           </Route>

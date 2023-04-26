@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import styles from '../signIn/Button.module.css';
 const Navbar = () => {
 
     return (
@@ -6,8 +8,9 @@ const Navbar = () => {
             <div className="container-fluid">
                 <a className="navbar-brand">LMS</a>
                 <form className="d-flex">
-                    <Link className="btn btn-outline-success" role='button' to='/home'>Home</Link>
-                    <Link className="btn btn-outline-success" role='button' to='/books'>Books</Link>
+                    <Link role='button' to='/home'><Button bsPrefix={styles.customBtnPrimary}>Home</Button></Link>
+                    &nbsp;
+                    <Link role='button' to='/books'><Button bsPrefix={styles.customBtnPrimary}>Books</Button></Link>
                 </form>
             </div>
         </nav>

@@ -1,6 +1,7 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import Button from './Button';
+import styles from '../signIn/Button.module.css';
 const SignIn = () => {
     const [inpName, setInName] = useState('');
     const [inpPass, setInPass] = useState('');
@@ -63,9 +64,9 @@ const SignIn = () => {
                 <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
             </div>
             {!inPassCheck  && <p>Password Mismatch or Invalid Username</p>}
-            <Button style="w-100 btn btn-lg btn-primary" value="Sign In" />
+            <Button style={styles.customBtnPrimary} value="Sign In" />
             <p></p>
-            <Link className="w-100 btn btn-lg btn-primary" role='button' to='/signup'>Sign Up</Link>
+            <Link className={styles.customBtnPrimary} role='button' to='/signup'>Sign Up</Link>
         </form>
     )
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import styles from '../signIn/Button.module.css';
 
 const Update = (props) => {
     const data = props.obj;
@@ -25,7 +26,7 @@ const Update = (props) => {
     }
     return (
         <React.Fragment>
-            <Button variant="primary" onClick={handleShow}>
+            <Button bsPrefix={styles.customBtnPrimary} onClick={handleShow}>
                 Update
             </Button>
 

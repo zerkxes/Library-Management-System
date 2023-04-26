@@ -21,7 +21,7 @@ const List = (props) => {
                         <td style={{width:'7rem'}}>{x.username}</td>
                         <td style={{width:'7rem'}}>{x.borrow_d}</td>
                         <td style={{width:'7rem'}}>{x.return_d}</td>
-                        <td><Update obj={x} /><Delete obj={x} /><Borrow obj={x}/></td>
+                        <td><Update obj={x}/>&nbsp;<Borrow obj={x} />&nbsp;<Delete obj={x} /></td>
                     </tr>
                 )
             })

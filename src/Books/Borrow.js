@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import styles from '../signIn/Button.module.css';
+
 const Borrow = (props) => {
     const ob = props.obj;
     const [show, setShow] = useState(false);
@@ -15,7 +17,7 @@ const Borrow = (props) => {
     }
     return (
         <>
-            <Button variant="dark" size='md' onClick={handleShow}>
+            <Button bsPrefix={styles.customBtnPrimary} size='md' onClick={handleShow}>
                 Borrow
             </Button>
 

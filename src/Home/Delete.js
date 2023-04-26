@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import styles from '../signIn/Button.module.css';
 
 const Delete = (props) => {
     const ob = props.obj;
@@ -16,7 +17,7 @@ const Delete = (props) => {
     }
     return (
         <>
-            <Button variant="danger" onClick={handleShow}>
+            <Button bsPrefix={styles.customBtnDanger} onClick={handleShow}>
                 Delete
             </Button>
 

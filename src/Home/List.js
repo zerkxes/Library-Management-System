@@ -19,7 +19,7 @@ const List = (props) => {
                         <td>{x.name}</td>
                         <td>{x.username}</td>
                         <td>{x.role}</td>
-                        <td><Update obj={x}/><Delete obj={x}/></td>
+                        <td><Update obj={x}/>&nbsp;<Delete obj={x}/></td>
                     </tr>
                 )
             })

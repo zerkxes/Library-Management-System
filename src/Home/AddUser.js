@@ -1,5 +1,6 @@
 import Button from "../signIn/Button";
 import { useState } from "react";
+import styles from '../signIn/Button.module.css';
 const AddUser = () => {
     const [inPass, setInPass] = useState('');
     const [inPassCheck, setInpPassCheck]= useState(true);
@@ -37,7 +38,7 @@ const AddUser = () => {
                 </div>
             </div>
             <div className="col-md-3">
-                <Button value="Add User" style="w-100 btn btn-lg btn-primary"/>
+                <Button value="Add User" style={styles.customBtnPrimary}/>
             </div>
         </form>
     );

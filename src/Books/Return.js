@@ -1,4 +1,5 @@
 import Button from "../signIn/Button";
+import styles from '../signIn/Button.module.css';
 
 const Return = () => {
     const formSubmissionHandler = (event) => {
@@ -27,7 +28,7 @@ const Return = () => {
                 </div>
             </div>
             <div className="col-md-3">
-                <Button value="Return Book" style="w-100 btn btn-lg btn-primary" />
+                <Button value="Return Book" style={styles.customBtnPrimary} />
             </div>
         </form>
     );

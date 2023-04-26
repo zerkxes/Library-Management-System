@@ -1,5 +1,6 @@
 import Button from '../signIn/Button';
 import { useState } from 'react';
+import styles from '../signIn/Button.module.css';
 const SignUp = () => {
     const [inPass, setInPass] = useState('');
     const [inPassCheck, setInpPassCheck] = useState(true);
@@ -32,7 +33,7 @@ const SignUp = () => {
                 <label htmlFor="floatingPassword">Password</label>
             </div>
             <br />
-            <Button value="Sign Up" style="w-100 btn btn-lg btn-primary"/>
+            <Button value="Sign Up" style={styles.customBtnPrimary}/>
         </form>
     );
 }
