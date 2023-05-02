@@ -1,7 +1,7 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import Button from './Button';
-import styles from '../signIn/Button.module.css';
+import styles from './Signin.module.css';
 const SignIn = () => {
     const [inpName, setInName] = useState('');
     const [inpPass, setInPass] = useState('');
@@ -13,16 +13,18 @@ const SignIn = () => {
 
     async function passCheck() {
         try {
-            const res = await fetch(`https://dummyjson.com/users/search?q=${inpName}`);
+            const res = await fetch(`http://localhost:8081/user/findByUser/${inpName}`);
             
             if (!res.ok)
                 throw new Error('Something went wrong');
 
             const data = await res.json();
-            if (data.users[0].password === inpPass) {
+            if (data.pswrd === inpPass) {
+                console.log(data.pswrd)
                 history.push('/home');
             }
             else
+            console.log("wrong password");
                 return false;
 
         } catch (error) {
@@ -66,7 +68,7 @@ const SignIn = () => {
             {!inPassCheck  && <p>Password Mismatch or Invalid Username</p>}
             <Button style={styles.customBtnPrimary} value="Sign In" />
             <p></p>
-            <Link className={styles.customBtnPrimary} role='button' to='/signup'>Sign Up</Link>
+            <Link role='button' to='/signup'><Button style={styles.customBtnPrimary} value="Sign Up"/></Link>
         </form>
     )
 }
