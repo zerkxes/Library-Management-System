@@ -1,7 +1,10 @@
 import Button from "../signIn/Button";
 import Update from "./Update";
 import Delete from "./Delete";
+import { useContext } from "react";
+import authContext from "../authContext";
 const List = (props) => {
+    const ctx=useContext(authContext);
     const ob = props.objarr;
     const column = Object.keys(ob[0]);
     //console.log(ob);
@@ -17,8 +20,9 @@ const List = (props) => {
                     <tr>
                         <th scope="row" key={x.id}>{x.id}</th>
                         <td>{x.name}</td>
-                        <td>{x.username}</td>
-                        <td>{x.role}</td>
+                        <td>{x.u_name}</td>
+                        <td>{x.type}</td>
+                        <td>{x.z_owner}</td>
                         <td><Update obj={x}/>&nbsp;<Delete obj={x}/></td>
                     </tr>
                 )

@@ -2,7 +2,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import Button from './Button';
 import styles from './Signin.module.css';
-const SignIn = () => {
+const SignIn = (props) => {
     const [inpName, setInName] = useState('');
     const [inpPass, setInPass] = useState('');
     const [inPassCheck, setInpPassCheck] = useState(true);
@@ -20,7 +20,8 @@ const SignIn = () => {
 
             const data = await res.json();
             if (data.pswrd === inpPass) {
-                console.log(data.pswrd)
+                //console.log(data.pswrd)
+                props.onSubmit(inpName.trim());
                 history.push('/home');
             }
             else
