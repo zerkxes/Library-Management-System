@@ -3,19 +3,21 @@ import Update from "./Update";
 import Delete from "./Delete";
 import { useContext } from "react";
 import authContext from "../authContext";
+import { Dropdown } from "react-bootstrap/Dropdown";
 const List = (props) => {
-    const ctx=useContext(authContext);
+    const ctx = useContext(authContext);
     const ob = props.objarr;
     const column = Object.keys(ob[0]);
     //console.log(ob);
     const Thdata = () => {
-        return column.map((data)=>{
-            return <th scope="col" key={data}>{data}</th>
+        return column.map((data) => {
+            if (data !== 'pswrd')
+                return <th scope="col" key={data}>{ data=='type'? 'Role': data}</th>
         })
     }
-    const TdData= () => {
+    const TdData = () => {
         return (
-             ob.map((x) => {
+            ob.map((x) => {
                 return (
                     <tr>
                         <th scope="row" key={x.id}>{x.id}</th>
@@ -23,7 +25,7 @@ const List = (props) => {
                         <td>{x.u_name}</td>
                         <td>{x.type}</td>
                         <td>{x.z_owner}</td>
-                        <td><Update obj={x}/>&nbsp;<Delete obj={x}/></td>
+                        <td><Update obj={x} />&nbsp;<Delete obj={x} /></td>
                     </tr>
                 )
             })
