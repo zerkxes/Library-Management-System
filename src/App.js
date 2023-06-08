@@ -6,7 +6,6 @@ import Home from './Home/Home';
 import Books from './Books/Books';
 import AuthContext from './authContext';
 import {useState} from 'react';
-import SideBar from './SideBar';
 
 function App() {
   const [uName, setUname] = useState('');
