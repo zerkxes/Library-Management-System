@@ -10,10 +10,14 @@ const List = (props) => {
     const column = Object.keys(ob[0]);
     //console.log(ob);
     const Thdata = () => {
-        return column.map((data) => {
-            if (data !== 'pswrd')
-                return <th scope="col" key={data}>{ data=='type'? 'Role': data}</th>
-        })
+        return (<tr>
+            <th scope="col" key='id'>Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Role</th>
+            <th scope="col">Owner</th>
+            <th scope="col" className="text-center">Actions</th>
+            </tr>);
     }
     const TdData = () => {
         return (
@@ -33,10 +37,10 @@ const List = (props) => {
     }
     return (
         <table className="table table-hover align-middle">
-            <thead>
+            <thead className="p-3">
                 {Thdata()}
             </thead>
-            <tbody>
+            <tbody className="p-3">
                 {TdData()}
             </tbody>
         </table>

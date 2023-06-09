@@ -18,9 +18,9 @@ const List = (props) => {
                     <tr >
                         <th scope="row" key={x.id}>{x.id}</th>
                         <td style={{width: '6rem'}} >{x.name}</td>
-                        <td style={{width:'7rem'}}>{x.username}</td>
-                        <td style={{width:'7rem'}}>{x.borrow_d}</td>
-                        <td style={{width:'7rem'}}>{x.return_d}</td>
+                        <td style={{width:'7rem'}}>{x.owner}</td>
+                        <td style={{width:'7rem'}}>{x.b_date==null?'--':x.b_date}</td>
+                        <td style={{width:'7rem'}}>{x.r_date==null?'--':x.r_date}</td>
                         <td><Update obj={x}/>&nbsp;<Borrow obj={x} />&nbsp;<Delete obj={x} /></td>
                     </tr>
                 )

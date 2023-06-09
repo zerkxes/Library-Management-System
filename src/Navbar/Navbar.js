@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
-import styles from '../signIn/Button.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from 'react-router-dom';
 import {
     CDBSidebar,
@@ -23,11 +22,11 @@ const Navbar = () => {
 
                 <CDBSidebarContent className="sidebar-content">
                     <CDBSidebarMenu>
-                        <NavLink exact to="/" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
+                        <NavLink exact to="/home" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="columns">Manage Users</CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink exact to="/tables" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="table">Tables</CDBSidebarMenuItem>
+                        <NavLink exact to="/books" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="table">Manage Books</CDBSidebarMenuItem>
                         </NavLink>
                         <NavLink exact to="/profile" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
@@ -42,13 +41,21 @@ const Navbar = () => {
                     </CDBSidebarMenu>
                 </CDBSidebarContent>
 
-                <CDBSidebarFooter style={{ textAlign: 'center' }}>
+                <CDBSidebarFooter style={{ textAlign: 'center' }} >
                     <div
                         style={{
                             padding: '20px 5px',
                         }}
                     >
-                        Sidebar Footer
+                        <NavLink exact to='/signout' activeClassName="activeClicked" style={({ isActive }) =>
+                            isActive
+                                ? {
+                                    color: '#fff',
+                                    background: 'inherit',
+                                }
+                                : { color: '#fff', background: 'inherit' }}>
+                            <FontAwesomeIcon icon={faPowerOff} />
+                        </NavLink>
                     </div>
                 </CDBSidebarFooter>
             </CDBSidebar>

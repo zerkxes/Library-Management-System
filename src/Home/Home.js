@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <React.Fragment>
             {ReactDOM.createPortal(<Navbar />, document.getElementById('navbar'))}
-            <AddUser />
+            {/* <AddUser /> */}
             <h3>Users:</h3>
             <ListUser />
         </React.Fragment>
