@@ -3,7 +3,7 @@ import Update from "./Update";
 import Delete from "./Delete";
 import { useContext } from "react";
 import authContext from "../authContext";
-import { Dropdown } from "react-bootstrap/Dropdown";
+import Dropdown from "../Navbar/Dropdown";
 const List = (props) => {
     const ctx = useContext(authContext);
     const ob = props.objarr;
@@ -29,7 +29,8 @@ const List = (props) => {
                         <td>{x.u_name}</td>
                         <td>{x.type}</td>
                         <td>{x.z_owner}</td>
-                        <td><Update obj={x} />&nbsp;<Delete obj={x} /></td>
+                        {/* <td><Update obj={x} />&nbsp;<Delete obj={x} /></td> */}
+                        <td><Dropdown info='user' obj={x}/></td>
                     </tr>
                 )
             })

@@ -9,7 +9,7 @@ const Books = () => {
     return (
         <React.Fragment>
             {ReactDOM.createPortal(<Navbar />, document.getElementById('navbar'))}
-            <AddBooks /><br/><Return/>
+            {/* <AddBooks /><br/><Return/> */}
             <h3>Books:</h3>
             <ListBooks />
         </React.Fragment>

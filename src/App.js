@@ -6,6 +6,8 @@ import Home from './Home/Home';
 import Books from './Books/Books';
 import AuthContext from './authContext';
 import {useState} from 'react';
+import AddUser from './Home/AddUser';
+import AddBooks from './Books/AddBooks';
 
 function App() {
   const [uName, setUname] = useState('');
@@ -36,6 +38,12 @@ function App() {
             </Route>
             <Route path='/books'>
               <Books />
+            </Route>
+            <Route path='/addUser'>
+              <AddUser />
+            </Route>
+            <Route path='/addBooks'>
+              <AddBooks />
             </Route>
           </div>
         </div>

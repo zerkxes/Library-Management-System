@@ -5,6 +5,7 @@ import styles from '../signIn/Button.module.css';
 
 const Update = (props) => {
     const data = props.obj;
+    const info=props.page;
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -15,8 +16,10 @@ const Update = (props) => {
         setNewData(event.target.value);
     }
     const formSubmissionHandler = () => {
-        console.log(newData);
-        fetch('https://dummyjson.com/users/add', {
+        //console.log(newData);
+        let url;
+        info==='book'?url=`http://localhost:8081/book/update/${data.id}`:url=`http://localhost:8081/user/update/`;
+        fetch(url, {
             method: 'POST',
             body: newData,
             headers: {

@@ -9,6 +9,8 @@ import {
     CDBSidebarMenu,
     CDBSidebarMenuItem,
 } from 'cdbreact';
+import AddUser from '../Home/AddUser';
+import AddBooks from '../Books/AddBooks';
 const Navbar = () => {
 
     return (
@@ -28,11 +30,11 @@ const Navbar = () => {
                         <NavLink exact to="/books" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="table">Manage Books</CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink exact to="/profile" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
+                        <NavLink exact to="/addUser" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Add User</CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink exact to="/analytics" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="chart-line">Analytics</CDBSidebarMenuItem>
+                        <NavLink exact to="addBooks" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="chart-line">Add Books</CDBSidebarMenuItem>
                         </NavLink>
 
                         <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
