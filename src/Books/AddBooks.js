@@ -3,17 +3,32 @@ import styles from '../signIn/Button.module.css';
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import ReactDOM from "react-dom";
-const AddBooks = () => {
-    const formSubmissionHandler = (event) => {
+import authContext from '../authContext';
+import { useContext } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+function AddBooks() {
+    const ctx = useContext(authContext);
+    async function formSubmissionHandler(event) {
         event.preventDefault();
+        const res = await fetch(`http://localhost:8081/user/findByUser/${ctx.userName.trim()}`);
+        const dta = await res.json();
         const name = event.target[0].value;
-        fetch('https://dummyjson.com/users/add', {
+        console.log(name);
+        const bookObj = {
+            'name': name,
+            'owner': dta.name,
+        }
+        fetch(`http://localhost:8081/book/add/`, {
             method: 'POST',
-            body: JSON.stringify(name),
+            body: JSON.stringify(bookObj),
             headers: {
                 'Content-type': 'application/json'
             }
-        }).then(res => res.json()).then(console.log);
+        }).then(res => res.json()).then(routeChange);
+    }
+    let history = useHistory();
+    const routeChange = () => {
+        history.push('/books');
     }
     return (
         <React.Fragment>

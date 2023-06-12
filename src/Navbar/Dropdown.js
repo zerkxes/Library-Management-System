@@ -18,9 +18,9 @@ export default function App(props) {
                     <Dropdown.Item href="#">
                         <Update obj={props.obj} />
                     </Dropdown.Item>
-                    {props.info === 'book' && <Dropdown.Item href="#"><Borrow obj={props.obj} /></Dropdown.Item>}
+                    {props.info == 'book' && <Dropdown.Item href="#"><Borrow obj={props.obj} /></Dropdown.Item>}
                     <Dropdown.Item href="#">
-                        <Delete obj={props.obj} />
+                        <Delete obj={props.obj} page={'book'}/>
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
