@@ -1,13 +1,10 @@
-import Button from "../signIn/Button";
-import Update from "./Update";
-import Delete from "./Delete";
-import { useContext } from "react";
-import authContext from "../authContext";
+//import { useContext } from "react";
+//import authContext from "../authContext";
 import Dropdown from "../Navbar/Dropdown";
 const List = (props) => {
-    const ctx = useContext(authContext);
+    //const ctx = useContext(authContext);
     const ob = props.objarr;
-    const column = Object.keys(ob[0]);
+    //const column = Object.keys(ob[0]);
     //console.log(ob);
     const Thdata = () => {
         return (<tr>
@@ -30,7 +27,7 @@ const List = (props) => {
                         <td>{x.type}</td>
                         <td>{x.z_owner}</td>
                         {/* <td><Update obj={x} />&nbsp;<Delete obj={x} /></td> */}
-                        <td><Dropdown info='user' obj={x}/></td>
+                        <td><Dropdown info='user' obj={x} {...props}/></td>
                     </tr>
                 )
             })

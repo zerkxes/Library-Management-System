@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import styles from '../signIn/Button.module.css';
-
+//import {useHistory} from 'react-router-dom/cjs/react-router-dom.min';
 const Update = (props) => {
     const data = props.obj;
-    const info=props.page;
+    const info = props.page;
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -18,14 +18,20 @@ const Update = (props) => {
     const formSubmissionHandler = () => {
         //console.log(newData);
         let url;
-        info==='book'?url=`http://localhost:8081/book/update/${data.id}`:url=`http://localhost:8081/user/update/`;
+        info === 'book' ? url = `http://localhost:8081/book/update/${data.id}` : url = `http://localhost:8081/user/update/`;
         fetch(url, {
             method: 'POST',
             body: newData,
             headers: {
-                'Content-type':'application/json'
+                'Content-type': 'application/json'
             }
-        }).then(res => res.json()).then(console.log);
+        }).then(res => res.json()).then(routeChange);
+    }
+
+    //let history = useHistory();
+    const routeChange = () => {
+        setTimeout(1000);
+        props.y();
     }
     return (
         <React.Fragment>
@@ -48,7 +54,7 @@ const Update = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={function() {handleClose(); formSubmissionHandler();}}>
+                    <Button variant="primary" onClick={function () { handleClose(); formSubmissionHandler(); }}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

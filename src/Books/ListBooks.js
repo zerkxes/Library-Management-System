@@ -1,11 +1,10 @@
-import { useState, useEffect, useCallback, useContext } from "react";
+import { useState, useEffect, useCallback  } from "react";
 import List from "../Books/List";
-import authContext from '../authContext';
+
 const ListBooks = () => {
     const [ob, setOb] = useState(null);
-    //const ctx=useContext(authContext);
-    //const owner=ctx.owner;
     const listHandler = useCallback(async () => {
+        //console.log('render');
         const response = await fetch(`http://localhost:8081/book/list/`);
         const data = await response.json();
         //console.log(data);
@@ -17,7 +16,7 @@ const ListBooks = () => {
     }, [listHandler]);
 
     return (
-        ob && <List objarr={ob} />
+        ob && <List objarr={ob} y={listHandler}/>
     )
 }
 export default ListBooks;

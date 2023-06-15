@@ -9,15 +9,17 @@ import {
     CDBSidebarMenu,
     CDBSidebarMenuItem,
 } from 'cdbreact';
-import AddUser from '../Home/AddUser';
-import AddBooks from '../Books/AddBooks';
+import authContext from "../authContext";
+import { useContext } from 'react';
 const Navbar = () => {
-
+    const ctx = useContext(authContext);
+    //const manageUser = ;
+    //const addUser = ;
     return (
         <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
             <CDBSidebar textColor="#fff" backgroundColor="#333">
                 <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-                    <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
+                    <a href="#" className="text-decoration-none" style={{ color: 'inherit' }}>
                         LMS
                     </a>
                 </CDBSidebarHeader>
@@ -25,21 +27,21 @@ const Navbar = () => {
                 <CDBSidebarContent className="sidebar-content">
                     <CDBSidebarMenu>
                         <NavLink exact to="/home" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="columns">Manage Users</CDBSidebarMenuItem>
+                            {ctx.role==='Librarian' &&<CDBSidebarMenuItem icon="columns">Manage Users</CDBSidebarMenuItem>}
                         </NavLink>
                         <NavLink exact to="/books" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="table">Manage Books</CDBSidebarMenuItem>
                         </NavLink>
                         <NavLink exact to="/addUser" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="user">Add User</CDBSidebarMenuItem>
+                            {ctx.role==='Librarian' &&<CDBSidebarMenuItem icon="user">Add User</CDBSidebarMenuItem>}
                         </NavLink>
                         <NavLink exact to="addBooks" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="chart-line">Add Books</CDBSidebarMenuItem>
+                            {ctx.role==='Librarian' &&<CDBSidebarMenuItem icon="chart-line">Add Books</CDBSidebarMenuItem>}
                         </NavLink>
 
-                        <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
+                        {/* <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="exclamation-circle">404 page</CDBSidebarMenuItem>
-                        </NavLink>
+                        </NavLink> */}
                     </CDBSidebarMenu>
                 </CDBSidebarContent>
 

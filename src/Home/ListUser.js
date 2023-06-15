@@ -3,6 +3,7 @@ import List from './List';
 import authContext from '../authContext';
 const ListUser = () => {
     const [ob, setOb] = useState(null);
+    
     const ctx=useContext(authContext);
 
     const listHandler = useCallback(async () => {
@@ -17,8 +18,10 @@ const ListUser = () => {
         listHandler();
     }, [listHandler]);
 
+    
+
     return (
-        ob && <List objarr={ob} />
+        ob && <List objarr={ob} y={listHandler}/>
     )
 
 }

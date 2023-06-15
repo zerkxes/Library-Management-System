@@ -14,15 +14,15 @@ const SignIn = (props) => {
     async function passCheck() {
         try {
             const res = await fetch(`http://localhost:8081/user/findByUser/${inpName}`);
-            
+            //const dta= await res.json();
             if (!res.ok)
                 throw new Error('Something went wrong');
 
             const data = await res.json();
             if (data.pswrd === inpPass) {
                 //console.log(data.pswrd)
-                props.onSubmit(inpName.trim());
-                history.push('/home');
+                props.onSubmit(inpName.trim(), data.type)
+                data.type==='Librarian'? history.push('/home'): history.push('/books')
             }
             else
             console.log("wrong password");
@@ -67,7 +67,7 @@ const SignIn = (props) => {
                 <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
             </div>
             {!inPassCheck  && <p>Password Mismatch or Invalid Username</p>}
-            <Button style={styles.customBtnPrimary} value="Sign In" />
+            <Button style={styles.customBtnPrimary} value="Sign In &nbsp;" />
             <p></p>
             <Link role='button' to='/signup'><Button style={styles.customBtnPrimary} value="Sign Up"/></Link>
         </form>

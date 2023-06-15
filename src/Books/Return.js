@@ -1,36 +1,48 @@
-import Button from "../signIn/Button";
+import Button from 'react-bootstrap/Button';
 import styles from '../signIn/Button.module.css';
+import authContext from '../authContext';
+import { useState, useContext } from "react";
+import Modal from 'react-bootstrap/Modal';
+const Return = (props) => {
+    const ob = props.obj;
+    const ctx = useContext(authContext);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    //const ctx = useContext(authContext);
+    async function borrowHandler() {
+        const res = await fetch(`http://localhost:8081/user/findByUser/${ctx.userName.trim()}`);
+        const dta = await res.json();
+        
+        fetch(`http://localhost:8081/book/return/${dta.id}/${ob.id}`, {
+        }).then(routeChange);
+    }
 
-const Return = () => {
-    const formSubmissionHandler = (event) => {
-        event.preventDefault();
-        const name = event.target[0].value;
-        fetch('https://dummyjson.com/users/add', {
-            method: 'POST',
-            body: JSON.stringify(name),
-            headers: {
-                'Content-type': 'application/json'
-            }
-        }).then(res => res.json()).then(console.log);
+    const routeChange = () => {
+        setTimeout(1000);
+        props.y();
     }
     return (
-        <form className="row row-cols-lg-auto g-3 align-items-center" onSubmit={formSubmissionHandler}>
-            <div className="col-md-3">
-                <label className="visually-hidden" htmlFor="inputName" />
-                <div className="input-group">
-                    <input type="text" className="form-control" id="inputName" placeholder="username" required />
-                </div>
-            </div>
-            <div className="col-md-3">
-                <label className="visually-hidden" htmlFor="inputName1" />
-                <div className="input-group">
-                    <input type="text" className="form-control" id="inputName1" placeholder="Book name" required />
-                </div>
-            </div>
-            <div className="col-md-3">
-                <Button value="Return Book" style={styles.customBtnPrimary} />
-            </div>
-        </form>
+        <>
+            <Button bsPrefix={styles.customBtnPrimary} size='md' onClick={handleShow}>
+                Return
+            </Button>
+
+            <Modal show={show} onHide={handleClose} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Return book</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Return {ob.name}?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Cancel
+                    </Button>
+                    <Button bsPrefix={styles.customBtnPrimary} style={{width: 'auto'}} onClick={function () { handleClose(); borrowHandler(); }}>
+                        Return
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
     );
 }
 
