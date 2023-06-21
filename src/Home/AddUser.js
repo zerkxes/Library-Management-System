@@ -30,7 +30,7 @@ const AddUser = () => {
                 'name': event.target[0].value,
                 'u_name': event.target[1].value,
                 'pswrd': event.target[2].value,
-                'type': "Student",
+                'type': "Teacher",
                 'z_owner': dta.name,
                 'book': []
             }
